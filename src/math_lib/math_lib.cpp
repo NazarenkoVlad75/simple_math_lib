@@ -4,21 +4,24 @@
 
 namespace MathLib
 {
+    
     bool isEqual(double a, double b, double tolerance)
     {
-        return abs(a - b) <= tolerance;
+        return std::abs(a - b) <= tolerance;
     }
+
 
     bool isPrime(int n)
     {
         if (n <= 1)
             return false;
-        
+
         for (int i = 2; i * i <= n; i++)
         {
             if (n % i == 0)
-                return false;        
+                return false;
         }
+
         return true;
     }
 
@@ -26,6 +29,7 @@ namespace MathLib
     {
         int lcm = 1;
         int maxNum = std::max(a, b);
+
         for (int i = maxNum; i <= a * b; i += maxNum)
         {
             if (i % a == 0 && i % b == 0)
@@ -34,13 +38,35 @@ namespace MathLib
                 break;
             }
         }
+
         return lcm;
     }
 
     int GCD(int a, int b)
     {
-		if (b == 0) return a;
-		return GCD(b, a % b);
-	}
-}
+        if (b == 0)
+            return a;
 
+        return GCD(b, a % b);
+    }
+
+    // Function to calculate factorial
+    int factorial(int n)
+    {
+        if (n < 0)
+        {
+            throw std::invalid_argument(
+                "Factorial is not defined for negative numbers."
+            );
+        }
+
+        int result = 1;
+
+        for (int i = 1; i <= n; i++)
+        {
+            result *= i;
+        }
+
+        return result;
+    }
+}

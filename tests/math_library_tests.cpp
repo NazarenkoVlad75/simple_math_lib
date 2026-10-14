@@ -18,12 +18,14 @@ protected:
     }
 };
 
+
 TEST_F(MathLibTestFixture, AddTwoValues)
 {
     EXPECT_EQ(MathLib::add(10.5, 2.5), 13.0);
     EXPECT_TRUE(MathLib::isEqual(MathLib::add(10.5, 2.5), 13.0));
-    EXPECT_FALSE(MathLib::isEqual(MathLib::add(10.5, 2.5), 13.0001));
+    EXPECT_FALSE(MathLib::isEqual(MathLib::add(10.5, 2.5), 13.0001, 0.000001));
 }
+
 
 TEST_F(MathLibTestFixture, SubTwoValues)
 {
@@ -76,4 +78,11 @@ TEST_F(MathLibTestFixture, IsPrimeTest)
 TEST_F(MathLibTestFixture, GreatestCommonDivider)
 {
     EXPECT_EQ(MathLib::GCD(10, 6), 2);
+}
+
+TEST_F(MathLibTestFixture, Factorial)
+{
+    EXPECT_EQ(MathLib::factorial(0), 1);
+    EXPECT_EQ(MathLib::factorial(1), 1);
+    EXPECT_EQ(MathLib::factorial(5), 120);
 }
